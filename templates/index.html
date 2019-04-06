@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <a href="{% url 'logout' %}">Logout</a>
+    <form method="post" action="/">
+        {% csrf_token %}
+        {{ url_submission_form.as_p }}
+        <input type="submit" value="Submit"/>
+    </form>
+
+    <table>
+        <thead></thead>
+        <tbody>
+        {% for redirection_key in redirection_keys %}
+            <tr>
+                <td><a href="{{ redirection_key.key }}" target="_blank">{{ redirection_key.key }}</a></td>
+                <td>{{ redirection_key.target_url.url }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
