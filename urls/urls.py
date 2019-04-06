@@ -24,8 +24,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', views.index, name='home'),
+    path('accounts/signup/', views.signup, name='signup'),
     path('accounts/login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('accounts/logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
 
-    path('r/<slug:slug>/', views.redirect_url, name='redirect_url'),
+    path('r/<slug:slug>/', views.visit, name='redirect_url'),
 ]
