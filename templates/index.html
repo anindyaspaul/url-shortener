@@ -14,7 +14,7 @@
         <tbody>
         {% for redirection_key in redirection_keys %}
             <tr>
-                <td><a href="{{ redirection_key.key }}" target="_blank">{{ redirection_key.key }}</a></td>
+                <td><a href="/r/{{ redirection_key.key }}" target="_blank">/r/{{ redirection_key.key }}</a></td>
                 <td>{{ redirection_key.target_url.url }}</td>
             </tr>
         {% endfor %}
