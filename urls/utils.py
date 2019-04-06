@@ -34,3 +34,15 @@ def add_url_redirection(owner: User, key: str, url: str):
 
 def get_redirection_keys(owner: User, is_active=True) -> List[RedirectionKey]:
     return RedirectionKey.objects.filter(owner=owner, is_active=is_active).all()
+
+
+def get_target_url(key: str) -> str:
+    redirection_key = None
+    try:
+        redirection_key = RedirectionKey.objects.get(key=key)
+    except RedirectionKey.DoesNotExist:
+        pass
+    if redirection_key is None:
+        print(f'Redirection key {key} does not exist.')
+        return None
+    return redirection_key.target_url.url
